@@ -1,7 +1,5 @@
 package seedu.duke;
 
-import java.util.Scanner;
-
 public class Resumake {
     private RecordList list;
     private final Ui ui;

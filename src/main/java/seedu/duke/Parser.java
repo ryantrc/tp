@@ -9,7 +9,8 @@ public class Parser {
         switch(keyword) {
         case "bye":
             return new ExitCommand();
+        default:
+            return null;
         }
-        return null;
     }
 }

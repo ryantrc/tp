@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RecordListTest {
     @Test
-    public void add_record_addedToList_sizeIncreases() {
+    public void addRecord_recordAdded_sizeIncreases() {
         RecordList recordList = new RecordList();
         Record record = new Record("Test record");
 
