@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ParserTest {
     @Test
@@ -18,6 +19,26 @@ public class ParserTest {
     public void parse_mixedCaseByeInput_returnsExitCommand() {
         Command command = Parser.parse("ByE");
         assertInstanceOf(ExitCommand.class, command);
+    }
+
+    @Test
+    public void parse_findInput_returnsFindCommand() {
+        Command command = Parser.parse("find java");
+        assertInstanceOf(FindCommand.class, command);
+        assertEquals("java", ((FindCommand) command).getKeyword());
+    }
+
+    @Test
+    public void parse_findInputWithExtraSpaces_returnsFindCommand() {
+        Command command = Parser.parse("find    java");
+        assertInstanceOf(FindCommand.class, command);
+        assertEquals("java", ((FindCommand) command).getKeyword());
+    }
+
+    @Test
+    public void parse_findWithoutKeyword_returnsNull() {
+        Command command = Parser.parse("find");
+        assertNull(command);
     }
 
     @Test

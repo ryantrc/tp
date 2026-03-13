@@ -6,4 +6,17 @@ public class Record {
     public Record(String description) {
         this.description = description;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean containsKeyword(String keyword) {
+        return description.toLowerCase().contains(keyword.toLowerCase());
+    }
+
+    @Override
+    public String toString() {
+        return description;
+    }
 }
