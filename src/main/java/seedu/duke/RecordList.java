@@ -24,6 +24,10 @@ public class RecordList implements Iterable<Record> {
         return list.iterator();
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public void removeIndex(int index) {
         list.remove(index);
         this.size--;
