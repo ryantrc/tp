@@ -67,7 +67,7 @@ public class Parser {
         int roleIndex = args.indexOf("/role");
         int techIndex = args.indexOf("/tech");
         int fromIndex = args.indexOf("/from");
-        int toIndex = args.indexOf("to");
+        int toIndex = args.indexOf("/to");
 
         if (roleIndex == -1 || techIndex == -1 || fromIndex == -1 || toIndex == -1) {
             throw new IllegalArgumentException(

@@ -1,16 +1,17 @@
 package seedu.duke;
 
+import java.time.YearMonth;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.time.YearMonth;
-
+import seedu.duke.RecordType.Project;
 import seedu.duke.RecordType.Record;
 
-public class RecordListTest {
+public class AddCommandTest {
     @Test
-    public void addRecord_recordAdded_sizeIncreases() {
-        RecordList recordList = new RecordList();
+    public void AddedToList(){
+        RecordList list = new RecordList();
         Record record = new Record(
                 "Resumake CLI",
                 "Developer",
@@ -19,9 +20,10 @@ public class RecordListTest {
                 YearMonth.parse("2026-03")
         );
 
-        recordList.add(record);
+        AddCommand command = new AddCommand(record);
+        command.execute(list);
 
-        assertEquals(1,recordList.getSize());
-        assertEquals(record, recordList.getRecord(0));
+        assertEquals(1,list.getSize());
+        assertEquals(record, list.getRecord(0));
     }
 }

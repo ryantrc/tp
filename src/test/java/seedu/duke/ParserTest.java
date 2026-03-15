@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import seedu.duke.RecordType.*;
+import seedu.duke.RecordType.Record;
+
 public class ParserTest {
     @Test
     public void parse_byeInput_returnsExitCommand() {
@@ -45,5 +48,21 @@ public class ParserTest {
     public void parse_unknownCommandInput_returnsNull() {
         Command command = Parser.parse("hello");
         assertNull(command);
+    }
+
+    @Test
+    public void parse_validProjectInput() {
+        Command command = Parser.parse(
+                "project Capo CLI /role Developer /tech Java /from 2026-01 /to 2026-03"
+        );
+
+        assertInstanceOf(AddCommand.class, command);
+
+        RecordList list = new RecordList();
+        command.execute(list);
+
+        Record record = list.getRecord(0);
+        assertEquals("Capo CLI", record.toString());
+
     }
 }

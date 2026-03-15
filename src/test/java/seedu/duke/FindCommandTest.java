@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.time.YearMonth;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,6 +13,36 @@ import seedu.duke.RecordType.Record;
 
 public class FindCommandTest {
     private final PrintStream originalOut = System.out;
+
+    private RecordList fillRecordList() {
+        RecordList recordList = new RecordList();
+        Record javaProject = new Record(
+                "Java project",
+                "Developer",
+                "Java",
+                YearMonth.parse("2026-01"),
+                YearMonth.parse("2026-03")
+        );
+        Record pythonIntern = new Record(
+                "Python internship",
+                "Developer",
+                "Java",
+                YearMonth.parse("2026-01"),
+                YearMonth.parse("2026-03")
+        );
+        Record fullStackApp = new Record(
+                "Full stack Java app",
+                "Developer",
+                "Java",
+                YearMonth.parse("2026-01"),
+                YearMonth.parse("2026-03")
+        );
+
+        recordList.add(javaProject);
+        recordList.add(pythonIntern);
+        recordList.add(fullStackApp);
+        return recordList;
+    }
 
     @AfterEach
     public void restoreSystemStreams() {
@@ -23,10 +54,7 @@ public class FindCommandTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
-        RecordList recordList = new RecordList();
-        recordList.add(new seedu.duke.RecordType.Record("Java project"));
-        recordList.add(new seedu.duke.RecordType.Record("Python internship"));
-        recordList.add(new seedu.duke.RecordType.Record("Full stack Java app"));
+        RecordList recordList = fillRecordList();
 
         FindCommand findCommand = new FindCommand("java");
         findCommand.execute(recordList);
@@ -46,9 +74,7 @@ public class FindCommandTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
-        RecordList recordList = new RecordList();
-        recordList.add(new seedu.duke.RecordType.Record("Java project"));
-        recordList.add(new seedu.duke.RecordType.Record("Python internship"));
+        RecordList recordList = fillRecordList();
 
         FindCommand findCommand = new FindCommand("golang");
         findCommand.execute(recordList);
@@ -68,7 +94,14 @@ public class FindCommandTest {
         System.setOut(new PrintStream(outputStream));
 
         RecordList recordList = new RecordList();
-        recordList.add(new Record("JAVA capstone"));
+        Record javaCapstone = new Record(
+                "JAVA capstone",
+                "Developer",
+                "Java",
+                YearMonth.parse("2026-01"),
+                YearMonth.parse("2026-03")
+        );
+        recordList.add(javaCapstone);
 
         FindCommand findCommand = new FindCommand("java");
         findCommand.execute(recordList);
