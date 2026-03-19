@@ -32,7 +32,14 @@ public class Parser {
             }
             return new FindCommand(split[1]);
         case "show":
-            return new ShowCommand(Integer.parseInt(split[1]));
+            if (split.length < 2) {
+                return null;
+            }
+            try {
+                return new ShowCommand(Integer.parseInt(split[1]));
+            } catch (NumberFormatException e) {
+                return null;
+            }
         case "list":
             return new ListCommand();
 
@@ -79,6 +86,9 @@ public class Parser {
     }
 
     private static ParsedFields parseTimedRecordFields(String[] split) {
+        assert split != null : "split should not be null";
+        assert split.length >= 2 : "Expected command arguments after command word";
+
         String args = split[1].trim();
 
         int roleIndex = args.indexOf("/role");
