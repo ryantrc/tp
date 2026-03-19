@@ -1,3 +1,8 @@
+Loaded records from file.
 --------------------
 Welcome to Resumake
 --------------------
+--------------------
+bye
+--------------------
+Records saved to file.
