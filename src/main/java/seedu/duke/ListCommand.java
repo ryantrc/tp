@@ -12,14 +12,15 @@ public class ListCommand extends Command{
 
     @Override
     public void execute(RecordList list) {
-
+        int indexCount = 0;
 
         //Assert preconditions
         assert list != null : "RecordList should not be null";
 
         System.out.println("Here is a list of all your records.");
         for (Record record : list){
-            System.out.println(record);
+            indexCount += 1;
+            System.out.println(indexCount + ". " + record);
         }
     }
 }

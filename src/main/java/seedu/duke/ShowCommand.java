@@ -7,7 +7,7 @@ public class ShowCommand extends Command{
     private static final Logger logger = Logger.getLogger(ShowCommand.class.getName());
     int index;
     public ShowCommand(int index){
-        this.index = index;
+        this.index = index - 1;
     }
 
     public static void printRecord(RecordList records, int index) {
