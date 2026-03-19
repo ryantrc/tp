@@ -30,6 +30,10 @@ public class Parser {
                 return null;
             }
             return new FindCommand(split[1]);
+        case "show":
+            return new ShowCommand(Integer.parseInt(split[1]));
+        case "list":
+            return new ListCommand();
 
         case "project":
             r = parseProject(split);
