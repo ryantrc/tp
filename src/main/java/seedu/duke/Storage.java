@@ -77,7 +77,6 @@ public class Storage {
             try {
                 Files.createFile(path);
                 logger.fine("Created storage file: " + filepath);
-                System.out.println("File created: " + filepath);
             } catch (IOException e) {
                 logger.severe("Error creating the file: " + e.getMessage());
                 System.out.println("Error creating the file.");
